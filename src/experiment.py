@@ -6,8 +6,7 @@ from sacred import Experiment
 from sacred.observers import MongoObserver
 
 ex = Experiment("iris")
-ex.observers.append(MongoObserver(
-    'mongodb://mongo_user:mongo_password@localhost:27017/sacred?authSource=admin'))
+ex.observers.append(MongoObserver('mongodb://mongo_user:mongo_password@localhost:27017/sacred?authSource=admin'))
 
 @ex.config
 def default():
