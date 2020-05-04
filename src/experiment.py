@@ -3,8 +3,11 @@ from data.make_dataset import create_dataset
 from models.train_model import train_svc
 from models.predict_model import test_model
 from sacred import Experiment
+from sacred.observers import MongoObserver
 
 ex = Experiment("iris")
+ex.observers.append(MongoObserver(
+    'mongodb://mongo_user:mongo_password@localhost:27017/sacred?authSource=admin'))
 
 @ex.config
 def default():
