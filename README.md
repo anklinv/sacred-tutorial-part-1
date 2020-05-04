@@ -23,10 +23,14 @@ Project Organization
         ├── data           <- Scripts to download or generate data
         │   └── make_dataset.py
         │
-        └── models         <- Scripts to train models and then use trained models to make
-            │                 predictions
-            ├── predict_model.py
-            └── train_model.py
+        ├── models         <- Scripts to train models and then use trained models to make
+        │   │                 predictions
+        │   ├── predict_model.py
+        │   └── train_model.py
+        │
+        ├── experiment.py  <- Sacred experiment file
+        │
+        └── run.py         <- File to run multiple experiments
 
 --------
 
