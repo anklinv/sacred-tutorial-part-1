@@ -6,3 +6,4 @@ flake8
 scikit-learn
 sacred
 numpy
+pymongo
