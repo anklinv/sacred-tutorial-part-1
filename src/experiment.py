@@ -16,7 +16,7 @@ def default():
     C = 2
 
 @ex.command
-def create_dataset(data_path: str):
+def dataset(data_path: str):
     '''Generate dataset'''
     create_dataset(data_path, ex.add_artifact)
 
@@ -24,13 +24,13 @@ def create_dataset(data_path: str):
 def test(data_path, model_path):
     '''Test Model'''
     results = test_model(data_path, model_path)
-    ex.add_config(accuracy=results['accuracy'],
-                  precision=results['weighted avg']['precision'],
-                  recall=results['weighted avg']['recall'],
-                  f1_score=results['weighted avg']['f1-score']
-                 )
+    ex.log_scalar('accuracy', value=results['accuracy'])
+    ex.log_scalar('precision', value=results['weighted avg']['precision'])
+    ex.log_scalar('recall', value=results['weighted avg']['recall'])
+    ex.log_scalar('f1_score', value=results['weighted avg']['f1-score'])
 
 @ex.automain
 def train(data_path, model_path, kernel, C):
     '''Train SVC model'''
     train_svc(data_path, model_path, kernel, C)
+    test()
