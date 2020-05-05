@@ -1,15 +1,18 @@
 import os
+import getpass
 from data.make_dataset import create_dataset
 from models.train_model import train_svc
 from models.predict_model import test_model
 from sacred import Experiment
 from sacred.observers import MongoObserver
+from sacred import host_info_gatherer
 
 ex = Experiment("iris")
 ex.observers.append(MongoObserver('mongodb://mongo_user:mongo_password@localhost:27017/sacred?authSource=admin'))
 
 @ex.config
 def default():
+    username = getpass.getuser()
     data_path = os.path.join("..", "data")  # Path of the data
     model_path = os.path.join("..", "models")  # Path of the saved model and results
     kernel = "linear"
