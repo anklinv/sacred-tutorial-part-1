@@ -20,7 +20,7 @@ dump(scaler, scaler_path)
 
 kernel = "linear"
 gamma = 0.01
-C = 0.002
+C = 0.1
 
 model = SVC(kernel=kernel, gamma=gamma, C=C)
 model.fit(X=X, y=y)
