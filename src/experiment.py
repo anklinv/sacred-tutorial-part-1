@@ -8,7 +8,7 @@ from sacred.observers import MongoObserver
 from sacred import host_info_gatherer
 
 ex = Experiment("iris")
-ex.observers.append(MongoObserver('mongodb://mongo_user:mongo_password@localhost:27017/sacred?authSource=admin'))
+ex.observers.append(MongoObserver('mongodb://mongo_user:totallySecurePassword@localhost:27017/sacred?authSource=admin'))
 
 @ex.config
 def default():
